@@ -1,9 +1,8 @@
-# Cloudflare Workflows - Human-in-the-Loop with waitForEvent
+# Take home assignment for cloudflare
+Updating this [template](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent) I did some debugging with setup and added a non trivial new workflow feature of alt text for the image, adding this into the workflow. This demonstrates I cna come into an unfimilair dev environemnt, learn about workflows and deploy a new feature. :) (Hi if you are reading this).
 
-This template demonstrates how to build human-in-the-loop workflows using Cloudflare Workflows' `waitForEvent` API. It enables you to create durable, long-running workflows that can pause execution and wait for human input or external events before continuing.
 
 ## Cloudflare Services Used
-
 - Workers
 - Workflows
 - Workers AI
@@ -11,21 +10,11 @@ This template demonstrates how to build human-in-the-loop workflows using Cloudf
 - D1
 
 ## Repository Structure
-
 This is a mono-repository containing:
-
 - `/nextjs-workflow-frontend`: Next.js application for the frontend interface
 - `/workflow`: Cloudflare Workflow implementation
 
-## What is waitForEvent?
-
-The `waitForEvent` API is a powerful feature of Cloudflare Workflows that allows you to:
-
-- Pause workflow execution indefinitely until a specific event is received
-- Create human-in-the-loop workflows where manual approval or input is required
-- Build event-driven applications that respond to external triggers
-- Implement complex approval chains and decision points in your workflows
-
+# Insutructions
 ## Clone only the waitForEvent folder within the docs-examples repository
 
 1. Clone the repository without checking out files:
@@ -82,7 +71,7 @@ If you use the Deploy to Cloudflare button, you only need to complete "Step 4: A
 4. Apply the database schema (run in the /workflow folder):
 
    ```bash
-   npx wrangler d1 execute workflows-waitforevent-d1 --remote --file=./db.sql
+   npx wrangler d1 execute workflow-demo --remote --file=./db.sql
    ```
 
 5. Deploy the workflow using Wrangler:
@@ -125,14 +114,3 @@ If you use the "Deploy to Cloudflare" button for the Next.js frontend it will cr
    ```
 
 6. Find the deployment URL near the end of your `npm run deploy` terminal output. Play around with the app. If you have errors check for a trailing slash at the end of your `API_BASE_URL` in `constants.ts` or try a smaller sized picture.
-
-## Reference Architecture
-
-![workflow-diagram](https://github.com/user-attachments/assets/ffee1de3-a5a0-4727-bae0-cfbc665da308)
-
-## Learn More
-
-- [Getting started with Workflows guide](https://developers.cloudflare.com/workflows/get-started/guide/) to create and deploy your first workflow.
-- Read the [Workflows GA announcement blog](https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution/) to understand the core concepts
-- Review the [Workflows developer documentation](https://developers.cloudflare.com/workflows/) for detailed API reference and examples
-- Check out the [waitForEvent API documentation](https://developers.cloudflare.com/workflows/apis/wait-for-event/) for specific details about implementing human-in-the-loop workflows
